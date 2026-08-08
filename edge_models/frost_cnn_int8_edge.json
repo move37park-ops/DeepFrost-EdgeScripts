@@ -1,0 +1,41 @@
+{
+  "model_file": "frost_cnn_int8.tflite",
+  "runtime": "tflite_runtime.Interpreter",
+  "classes": [
+    "0_normal",
+    "1_early",
+    "2_mid",
+    "3_critical"
+  ],
+  "stage_names": [
+    "정상",
+    "초기",
+    "중기",
+    "임계"
+  ],
+  "img_size": 224,
+  "central_crop": null,
+  "input": {
+    "dtype": "int8",
+    "shape": [
+      1,
+      224,
+      224,
+      3
+    ],
+    "scale": 1.0,
+    "zero_point": -128,
+    "howto": "x_int8 = round(x_float_0_255 / scale) + zero_point, then clip to [-128, 127]"
+  },
+  "output": {
+    "dtype": "int8",
+    "shape": [
+      1,
+      4
+    ],
+    "scale": 0.00390625,
+    "zero_point": -128,
+    "howto": "prob = (y_int8 - zero_point) * scale  → argmax = frost_stage"
+  },
+  "note": "전처리(crop·resize)는 학습과 동일해야 함. 다르면 정확도가 크게 떨어짐."
+}

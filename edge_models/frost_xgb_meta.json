@@ -1,0 +1,18 @@
+{
+  "features": [
+    "outdoor_temp",
+    "outdoor_humidity",
+    "compressor_power",
+    "evaporator_temp",
+    "current"
+  ],
+  "stage_names": [
+    "정상",
+    "초기",
+    "중기",
+    "임계"
+  ],
+  "num_class": 4,
+  "noise_injected": true,
+  "val_accuracy": 0.6877
+}
